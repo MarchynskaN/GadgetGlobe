@@ -36,7 +36,7 @@ header {
   background-color: #0a27e2;
   
 }
-a{
+header > a{
   display: block;
   text-align: center;
   padding: 1em;
@@ -56,7 +56,7 @@ li{
  
 }
 
-a:hover,a.active{
+header > a:hover,a.active{
   color: #fff;
   background: #39add1;
 }
@@ -80,6 +80,7 @@ a:hover,a.active{
 }
 .profile button{
   padding: 10px;
+  margin-right: 10px;
 }
 header {
   display: flex;
@@ -93,6 +94,14 @@ header {
   align-items: center;
 }
 
+/* Error page: */
+.icn-error {
+  font-size: 3.2em;
+  margin-bottom: .25em;
+}
+.not-found {
+  text-align: center;
+}
 
 
 
