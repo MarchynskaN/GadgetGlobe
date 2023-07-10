@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/index.css';
 // import App from './Css/App.css';
- import App from './App';
+import App from './components/App';
 
 // const gadgets=[{
 //   id:1,
