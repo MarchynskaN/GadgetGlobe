@@ -39,8 +39,8 @@ header {
 header > a{
   display: block;
   text-align: center;
-  padding: 1em;
-  font-size:medium;
+  padding: 15px;
+  font-size:25px;
   color: #fff;
   text-transform: uppercase;
  list-style-type: none;
@@ -49,9 +49,13 @@ header > a{
  
   
 }
+
 li{
   display: inline-block;
   list-style-type: none;
+  margin: 10px;
+  
+  
 
  
 }
@@ -59,6 +63,7 @@ li{
 header > a:hover,a.active{
   color: #fff;
   background: #39add1;
+  padding: 15px
 }
 
 .left input{
@@ -101,6 +106,29 @@ header {
 }
 .not-found {
   text-align: center;
+}
+img{
+  width: 60%;
+  height: 60%;
+
+ 
+}
+.image{
+float: left;
+width: 50%;
+}
+.details{
+  margin-top: 6%;
+float: left;
+width: 50%;
+margin-left: 0;
+}
+ button{
+  background-color: #e7fb04;
+  width: 20%;
+  height: 20%;
+  padding: 10px;
+
 }
 
 
