@@ -7,11 +7,9 @@ const GadgetSchema = new mongoose.Schema({
     p_category: String,
     p_price: Number,
     p_img: String,
-    p_details: {
-        p_features: String,
-        p_rating: Number,
-        p_offers: String,
-    },
+    p_features: String,
+    p_rating: Number,
+    p_offers: String,
 });
 
 
