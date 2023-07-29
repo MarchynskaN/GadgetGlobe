@@ -1,10 +1,10 @@
-//not done
+//done
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { baseURLApp } from "../../http-common";
-import '../css/index.css';
+import '../styles/index.css';
 
-function GadgetDetail() {
+function GadgetDetails() {
   const { id } = useParams();
   const [gadget, setGadget] = useState({});
     useEffect(() => {
@@ -16,12 +16,9 @@ function GadgetDetail() {
           })
           .catch(error => console.log(error));
   }, []);
-  if (!gadget) {
-    return <div>Gadget not found</div>;
-  }
 
   return (
-      <section id="section_1">
+    <div className="details">
       <h2>Product Details</h2>
       <hr></hr>
       <div class='container'>
@@ -37,14 +34,13 @@ function GadgetDetail() {
             <p> {gadget.p_features} </p>
             <h5> Offers </h5>
             <p> {gadget.p_offers} </p>
-            <button class="btn btn-primary" type='submit' 
-            onClick={(e) => handleCart(e)}>Add to Cart
-            </button>   
         </div>
       </div>
       </div>
-      </section> 
-  ); 
-};
+  </div>
+  );
+}
 
-export default GadgetDetail;
+export default GadgetDetails;
+
+

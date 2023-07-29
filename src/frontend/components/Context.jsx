@@ -1,3 +1,4 @@
+//done: category filter implemented
 //Context file to use everywhere
 import React, { createContext, useState, useEffect } from "react";
 import gadgetServices from "../services/gadgetServices";
@@ -10,6 +11,7 @@ export const ShopContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [originalGadgets, setOriginalGadgets] = useState([]);
   const [searchString, setSearchString] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all-gadgets");
 
   useEffect(() => {
     fetch(`${baseURLApp}/gadgets/`)
@@ -40,6 +42,15 @@ export const ShopContextProvider = (props) => {
     }
 
   }, [searchString]);
+
+  useEffect(() => {
+    fetch(`${baseURLApp}/gadgets/${selectedCategory}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setGadgets(data);
+      })
+      .catch((error) => console.log(error));
+  }, [selectedCategory]);
 
   const [cartItems, setCartItems] = useState({});
 
@@ -96,6 +107,8 @@ export const ShopContextProvider = (props) => {
     searchString,
     cartItems,
     gadgets,
+    selectedCategory,
+    setSelectedCategory,
     setCartItems,
     addToCart,
     gadgetDetails,

@@ -1,6 +1,5 @@
-import {NavLink } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import authService from "./services/authService";
+import authService from "../services/authService";
 
 export const Registration = () => {
   const [message, setMessage] = useState('');

@@ -8,6 +8,14 @@ gadgetRouter.route("/").get((req, res) => {
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// http://localhost:3000/gadgets/:category
+gadgetRouter.route("/:category").get((req, res) => {
+    const searchCategory = req.params.category;
+    GadgetModel.Gadget.find({ "p_category": searchCategory })
+        .then((gadgets) => res.json(gadgets))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
 //http://localhost:3000/gadgets/6422c460d386a575c9dad6d8
 gadgetRouter.route("/:id").get((req, res) => {
     GadgetModel.Gadget.findById(req.params.id)

@@ -1,14 +1,12 @@
-//Cart
+//Done: Cart merged with Cart-Item
 import React, { useContext, useEffect } from "react";
-import { Context } from "../../context/shop-context";
-import { CartItem } from "./cart-item";
+import { Context } from "./Context";
 import { useNavigate } from "react-router-dom";
-
-import "./cart.css";
-import cartServices from "../../services/cartServices";
+import cartServices from "../services/cartServices";
+// import "..styles/cart.css";
 
 function CartItem (props) {
-  const { _id, name, price, p_img } = props.data;
+  const { _id, p_name, p_price, p_img } = props.data;
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } = useContext(ShopContext);
 
   return (
@@ -16,9 +14,9 @@ function CartItem (props) {
       <img src={p_img} />
       <div className="desc">
         <p>
-          <b>{name}</b>
+          <b>{p_name}</b>
         </p>
-        <p> Price: ${price}</p>
+        <p> Price: ${p_price}</p>
         <div className="countHandler">
           <button onClick={() => removeFromCart(_id)}> - </button>
           <input

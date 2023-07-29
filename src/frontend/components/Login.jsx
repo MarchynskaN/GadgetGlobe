@@ -1,6 +1,7 @@
+//done
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../Context";
-import authservice from "../../services/authService";
+import authservice from "../services/authService";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
@@ -11,7 +12,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (user != null) {
-      setMessage(`${user.userName} is already loggedIn`);
+      setMessage(`${user.userName} is already logged in`);
     }}, []);
 
   const loginClick = () => {
