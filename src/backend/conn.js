@@ -1,15 +1,12 @@
+
+
 const mongoose=require("mongoose")
+
+mongoose.connect("mongodb://127.0.0.1:27017/student",{
+    autoIndex: true
+}).then(()=>{
+    console.log("connected")
+}).catch((e)=>{
+    console.log("not connected",e)
+})
   
-const uri = "mongodb://127.0.0.1:27017/gadgets";
-
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-
-connection.on('error', console.error.bind(console, 'connection error:'));
-
-
-connection.once('open', () => {
-    console.log("MongoDB database connection established successfully");
-});
-
-module.exports = connection;
