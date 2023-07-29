@@ -1,15 +1,13 @@
-//not done
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import '../css/App.css';
-import Navbar from './Navbar';
-import Home from './Home';
-import Login from './Login';
-import Profile from './Account';
+import Header from './Header';
+import Profile from './Profile';
 // @ts-ignore
 import Registration from './Registration';
 import NotFound from './NotFound';
-
+import Home from './Home';
 import GadgetDetail from './GadgetDetail';
 import Cart from './Cart';
 import { Drawer } from '@mui/material';
@@ -25,7 +23,15 @@ import { Drawer } from '@mui/material';
 
   function addtocart(data) {
     if(cartData.length === 0){
-      data.qty = 1;
+      // no data in cart
+      /*
+      qty: 0,
+    id: id,
+    description : gadget.desc,
+    details: gadget.details,
+    price: gadget.price
+    */
+   data.qty = 1;
       setCartData([data]);
     }else{
       // if product already in cart update qty
@@ -55,10 +61,10 @@ import { Drawer } from '@mui/material';
   return (
     <Router>
       <div className="App">
-      <Navbar user={user} handleCartToggleDrawer={handleCartToggleDrawer}/>
+      <Header handleCartToggleDrawer={handleCartToggleDrawer}/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/registration" element={<Registration />}/>
           <Route path="*" element={<NotFound />} />
           <Route path='/gadgets/:id' element={<GadgetDetail addtocart={addtocart}/>}/>

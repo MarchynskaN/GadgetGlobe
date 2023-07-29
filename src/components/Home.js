@@ -1,7 +1,6 @@
-//not done
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import '../css/index.css';
-import gadgetlist from '../../data/gadgetList';
+import gadgetlist from '../data/gadgetList';
 
 import {  NavLink } from 'react-router-dom'; 
 
