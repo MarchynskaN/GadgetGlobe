@@ -1,4 +1,4 @@
-import { axios_obj } from '../http-common.js';
+import { axios_obj } from '../../http-common.js';
 
 class GadgetService {
 
@@ -8,4 +8,4 @@ class GadgetService {
 
 }
 
-export default new gadgetService();
+export default new GadgetService();

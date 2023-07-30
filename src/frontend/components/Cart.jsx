@@ -7,7 +7,7 @@ import cartServices from "../services/cartServices";
 
 function CartItem (props) {
   const { _id, p_name, p_price, p_img } = props.data;
-  const { cartItems, addToCart, removeFromCart, updateCartItemCount } = useContext(ShopContext);
+  const { cartItems, addToCart, removeFromCart, updateCartItemCount } = useContext(Context);
 
   return (
     <div className="cartItem">
@@ -32,7 +32,7 @@ function CartItem (props) {
 
 
 function Cart() {
-  const { cartItems, getTotalCartAmount, books, user, setCartItems } = useContext(Context);
+  const { cartItems, getTotalCartAmount, gadgets, user, setCartItems } = useContext(Context);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 

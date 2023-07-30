@@ -1,12 +1,12 @@
 //done
 import React, { useContext } from "react";
-import { ShopContext } from "./Context";
+import { Context } from "./Context";
 import { Link } from "react-router-dom";
 import cartServices from "../services/cartServices";
 
 export const Product = (props) => {
   const { _id, p_name, p_price, p_img } = props.data;
-  const { addToCart, cartItems, user } = useContext(ShopContext);
+  const { addToCart, cartItems, user } = useContext(Context);
   const cartItemCount = cartItems[_id];
 
   const addToCartAction = (id) => {

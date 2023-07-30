@@ -1,16 +1,16 @@
 //done
-import "./styles/App.css";
+import "./frontend/styles/app.css";
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar  from "./components/Navbar";
-import Shop from './components/Shop'
-import { Login } from "./components/Login";
-import Cart  from "./components/Cart";
-import { Registration } from "./components/Registration";
-import GadgetDetails from "./components/GadgetDetals";
-// import { Checkout } from "./components/Checkout"
-import { ShopContextProvider} from "./components/Context";
+import Navbar  from "./frontend/components/Navbar";
+import Shop from './frontend/components/Shop'
+import { Login } from "./frontend/components/Login";
+import Cart  from "./frontend/components/Cart";
+import { Registration } from "./frontend/components/Registration";
+import GadgetDetails from "./frontend/components/GadgetDetails";
+// import { Checkout } from "./frontend/components/Checkout"
+import { ShopContextProvider} from "./frontend/components/Context";
 
 function App() {
   return (

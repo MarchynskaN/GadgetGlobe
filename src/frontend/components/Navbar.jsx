@@ -2,12 +2,12 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
-import { Context } from "../Context";
+import { Context } from "./Context";
 // import "./styles/navbar.css";
 
 function Navbar() {
   const { cartItems, setSearchString } = useContext(Context);
-  const totalItems = Object.valuess(cartItems).reduce((acc, quantity) => acc + quantity, 0);
+  const totalItems = Object.values(cartItems).reduce((acc, quantity) => acc + quantity, 0);
 
   const searchGadget = (searchTerm) => {
     setSearchString(searchTerm);

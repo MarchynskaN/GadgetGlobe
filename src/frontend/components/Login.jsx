@@ -1,6 +1,6 @@
 //done
 import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../Context";
+import { Context } from "./Context";
 import authservice from "../services/authService";
 import { Link } from "react-router-dom";
 

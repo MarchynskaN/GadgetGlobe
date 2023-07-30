@@ -2,9 +2,9 @@
 //Context file to use everywhere
 import React, { createContext, useState, useEffect } from "react";
 import gadgetServices from "../services/gadgetServices";
-import { baseURLApp } from "../http-common";
+import { baseURLApp } from "../../http-common";
 
-export const ShopContext = createContext(null);
+export const Context = createContext(null);
 export const ShopContextProvider = (props) => {
 
   const [gadgets, setGadgets] = useState([]);
@@ -119,8 +119,8 @@ export const ShopContextProvider = (props) => {
   };
 
   return (
-    <ShopContext.Provider value={contextValue}>
+    <Context.Provider value={contextValue}>
       {props.children}
-    </ShopContext.Provider>
+    </Context.Provider>
   );
 };
