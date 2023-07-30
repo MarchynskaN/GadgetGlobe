@@ -1,7 +1,7 @@
 //done
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "./Context";
-import authservice from "../services/authService";
+import AuthService from "../services/authService";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
@@ -26,7 +26,7 @@ export const Login = () => {
       password
     };
 
-    authservice.login(userLoginRequest)
+    AuthService.login(userLoginRequest)
       .then(response => {
         let user = response.data
         console.log(user)

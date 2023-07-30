@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import authService from "../services/authService";
+import AuthService from "../services/authService";
 
 export const Registration = () => {
   const [message, setMessage] = useState('');
@@ -39,7 +39,7 @@ export const Registration = () => {
         confirmPassword,
       };
 
-      authService.register(userRegisterRequest)
+      AuthService.register(userRegisterRequest)
       .then(response => {
         let user = response.data
         console.log(user)
@@ -65,8 +65,8 @@ export const Registration = () => {
                 type="text"
                 className="form-control"
                 id="floatingInput"
-                placeholder="first name"
-                name="firstName"
+                placeholder="user name"
+                name="userName"
               />
               <label htmlFor="floatingInput">UserName</label>
             </div>

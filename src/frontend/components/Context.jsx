@@ -23,6 +23,7 @@ export const ShopContextProvider = (props) => {
       .catch((error) => console.log(error));
   }, []);
 
+//search
   useEffect(() => {
     if (searchString != "") {
       //API SEARCH
@@ -100,7 +101,7 @@ export const ShopContextProvider = (props) => {
     console.log(itemId)
   };
 
-  const contextValue = {
+  const contextValue = { 
     setSearchString,
     setUser,
     user,

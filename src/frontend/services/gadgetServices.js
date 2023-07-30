@@ -2,8 +2,8 @@ import { axios_obj } from '../../http-common.js';
 
 class GadgetService {
 
-    searchBook(name) {
-        return axios_obj.get(`gadgets/name/${name}`)
+    searchGadget(p_name) {
+        return axios_obj.get(`gadgets/p_name/${p_name}`)
     }
 
 }

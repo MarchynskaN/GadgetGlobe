@@ -8,14 +8,19 @@ function GadgetDetails() {
   const { id } = useParams();
   const [gadget, setGadget] = useState({});
     useEffect(() => {
-      fetch(`${baseURLApp}/gadgets/`+id)
+      fetch(`${baseURLApp}/gadgets/${id}`)
           .then(response => response.json() )
           .then(data => {
             console.log(data)
             setGadget(data)
           })
           .catch(error => console.log(error));
-  }, []);
+  }, [id]);
+  
+  // Conditional rendering to handle the initial loading state
+  if (Object.keys(gadget).length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="details">

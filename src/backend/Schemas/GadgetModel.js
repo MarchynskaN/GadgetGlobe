@@ -13,10 +13,8 @@ const GadgetSchema = new mongoose.Schema({
     p_img: String,
     p_features: String,
     p_rating: Number,
-    p_offers: String,
-});
-
-
+    p_offers: String
+}, { collection : 'gadgets' });
 
 const Gadget = mongoose.model('Gadget', GadgetSchema);
-module.exports = Gadget;
+module.exports = { Gadget }; // Export as an object with the key 'Gadget'

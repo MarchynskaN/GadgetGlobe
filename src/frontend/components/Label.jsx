@@ -5,7 +5,7 @@ import React from "react";
 function Label(props) {
     return (
         <div className="catGadget">
-        <h3 className="catText"> &emsp; {props.p_name} </h3>{" "}
+        <h3 className="catText"> &emsp; {props.title} </h3>{" "}
       </div>
     )
   }

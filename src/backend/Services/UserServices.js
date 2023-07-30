@@ -2,18 +2,18 @@ const userRouter = require("express").Router();
 const conn = require("../conn")
 httpStatus = require("http-status-codes");
 
-
 let GadgetModel = require("../Schemas/GadgetModel");
 let User = require("../Schemas/UserModel");
 let Cart = require("../Schemas/CartModel");
 const { ObjectId } = require('mongodb');
 
-
-// REQUEST
+//adding new user WORKS
 // {
-//     "email": "nad",
-//     "password": "2123"
-// }
+//   "userName": "someName",
+//   "email": "somename@gmail.com",
+//   "password": "1234"
+//  }
+//http://localhost:3300/user/register use POST
 userRouter.route("/register").post(async (req, res) => {
     const userName = req.body.userName;
     const email = req.body.email;
@@ -22,7 +22,7 @@ userRouter.route("/register").post(async (req, res) => {
         userName,
         email,
         password
-    });
+});
 
     try {
         const savedUser = await newUser.save();
@@ -52,6 +52,8 @@ userRouter.route("/register").post(async (req, res) => {
     }
 });
 
+
+//not working
 userRouter.post('/addGadget', async (req, res) => {
     const { userId, gadgetId } = req.body;
   
@@ -96,12 +98,7 @@ userRouter.post('/addGadget', async (req, res) => {
     }
   });
 
-
-// REQUEST
-// {
-//     "email": "vasu",
-//     "password": "2123"
-// 
+//login WORKS
 userRouter.route("/login").post((req, res) => {
     const email = req.body.email;
     const password = req.body.password;

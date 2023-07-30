@@ -1,5 +1,5 @@
 //Done
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
 import { Context } from "./Context";
@@ -28,7 +28,7 @@ function Navbar() {
               id="search-form"
               size="50"
               className="search-input"
-              placeholder="  Search book by title.."
+              placeholder="  Search gadget by name.."
               onChange={(e) => {
                 console.log("Search input:", e.target.value);
                 searchGadget(e.target.value);

@@ -131,7 +131,6 @@ const gadgets=[{
     "p_offers": "No cost EMI $81/month"    
 },
 {
-    
     "p_name": "Lenovo Ideapad S145 Core i3 10th Gen",
     "p_brand": "Lenovo",
     "p_category": "Laptop",
