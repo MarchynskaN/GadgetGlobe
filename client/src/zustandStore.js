@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from "zustand"; //state management with hooks(simplified)
 
 const useUser = create((set) => ({
   user: null,

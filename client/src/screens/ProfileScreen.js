@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from "moment"; //popular tool for parsing, manipulating, and formatting dates and times in JavaScript
 import React, { useEffect, useState } from "react";
 
 import Header from "../components/Header";

@@ -2,80 +2,64 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "./../components/Header";
 import { PayPalButton } from "react-paypal-button-v2";
-
 import moment from "moment";
-
 import axios from "../http";
 import Message from "./../components/LoadingError/Error";
 import Loading from "./../components/LoadingError/Loading";
 
 const OrderScreen = () => {
-  window.scrollTo(0, 0);
-  const [sdkReady, setSdkReady] = useState(false);
   const { id: orderId } = useParams();
   const navigate = useNavigate();
-  // const orderId = match.params.id;
- 
+
   const [order, setOrder] = useState(null);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sdkReady, setSdkReady] = useState(false);
 
-  // const orderDetails = useSelector((state) => state.orderDetails);
-  // const { order, loading, error } = orderDetails;
-
-  if (!loading) {
-    const addDecimals = (num) => {
-      return (Math.round(num * 100) / 100).toFixed(2);
-    };
-    if (order) {
-      order.itemsPrice = addDecimals(
-        order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
-      );
-    }
-  }
-  const fetchOrderDetails = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(`/api/orders/${orderId}`);
-      setOrder(data);
-      setLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setLoading(false);
-    }
-  };
   useEffect(() => {
-    const addPayPalScript = async () => {
-      console.log("paypaling");
+    const fetchOrderDetails = async () => {
       try {
-        
-      const { data: clientId } = await axios.get("/api/config/paypal");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
+        setLoading(true);
+        const { data } = await axios.get(`/api/orders/${orderId}`);
+        setOrder(data);
+        setLoading(false);
       } catch (error) {
-        console.log(error.messahe)
+        setError(error.message);
+        setLoading(false);
       }
     };
-    if (!order) {
-      fetchOrderDetails();
-    } else if (!order.isPaid) {
-      if (!window.paypal) {
-        console.log("Loading paypal");
-        addPayPalScript();
-      } else {
-        setSdkReady(true);
-      }
-    }
-    // eslint-disable-next-line
-  }, [ orderId, , order]);
 
-  const successPaymentHandler = async (paymentResult="") => {
+    fetchOrderDetails();
+  }, [orderId]);
+
+  useEffect(() => {
+    console.log("ready: " + sdkReady);
+    const addPayPalScript = async () => {
+      try {
+        const { data: clientId } = await axios.get("/api/config/paypal");
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+        script.async = true;
+        script.onload = () => {
+          setSdkReady(true);
+        };
+        document.body.appendChild(script);
+      } catch (error) {
+        
+        console.log(error.message);
+      }
+    };
+
+    if (!window.paypal) {
+      addPayPalScript();
+    } else {
+      console.log("here we go");
+      setSdkReady(true);
+    }
+  }, []);
+
+  const successPaymentHandler = async (paymentResult = "") => {
     try {
       const { data } = await axios.put(
         `/api/orders/${orderId}/pay`,
@@ -85,7 +69,9 @@ const OrderScreen = () => {
         alert("Successfully Paid");
         navigate("/");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Payment error:", error);
+    }
   };
 
   return (
@@ -246,19 +232,12 @@ const OrderScreen = () => {
                       </tr>
                     </tbody>
                   </table>
-                  {!order.isPaid && (
+                  {!order.isPaid && sdkReady && (
                     <div className="col-12">
-                      {/* {loadingPay && <Loading />} */}
-                      {!sdkReady ? (
-                        // <Loading />
-                        <button>Pay Later</button>
-                      ) : (
-                        <PayPalButton
-                          amount={order.totalPrice}
-                          onSuccess={successPaymentHandler}
-                        />
-                      
-                      )}
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      />
                     </div>
                   )}
                 </div>
