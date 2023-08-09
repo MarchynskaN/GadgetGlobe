@@ -26,19 +26,9 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }));
-const allowedOrigins = ['http://localhost:3000'];
-
-// CORS options to set allowed origins and allow credentials
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Check if the origin is in the allowed list or if it is undefined (e.g., when the request is from the same origin)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // Allow sending and receiving of cookies and other credentials
+  origin: 'https://gadget-globe.vercel.app',
+  credentials: true,
 };
 
 // Use the cors middleware with the specified options
