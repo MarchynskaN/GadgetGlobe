@@ -14,20 +14,21 @@ import { isAuth } from "./Middleware/AuthMiddleware.js";
 const app = express();
 
 
-if(process.env?.NODE_ENV==='development'){
-
+if (process.env?.NODE_ENV !== "production") {
   dotenv.config();
-  app.use(morgan('dev'));
+  app.use(morgan("dev"));
 }
 connectDatabase();
 
 // Use Morgan in light mode
-app.use(express.json())
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 const corsOptions = {
-  origin: 'https://gadget-globe.vercel.app',
+  origin: process.env.ORIGIN || "https://gadgetglobef.onrender.com",
   credentials: true,
 };
 
